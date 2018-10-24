@@ -15,6 +15,8 @@ import reactMixin from 'react-mixin';
 const MIN_FLING_VELOCITY = 0.5;
 
 export default class ViewPager extends Component {
+  
+  
 
   static propTypes = {
     ...ViewPropTypes,
@@ -74,6 +76,10 @@ export default class ViewPager extends Component {
         });
       }
     });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.pageCount = nextProps.pageDataArray.length;    
   }
 
   componentWillMount() {
