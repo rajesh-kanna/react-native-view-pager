@@ -112,6 +112,7 @@ export default class ViewPager extends Component {
 
   render() {
     let dataSource = this.state.dataSource;
+    let initialListSize = 20;
     if (this.state.width && this.state.height) {
       let list = this.props.pageDataArray;
       if (!list) {
@@ -119,6 +120,7 @@ export default class ViewPager extends Component {
       }
       dataSource = dataSource.cloneWithRows(list);
       this.pageCount = list.length;
+      initialListSize  = list.length;
     }
 
     let gestureResponder = this.gestureResponder;
@@ -134,6 +136,7 @@ export default class ViewPager extends Component {
         <ListView
           style={{flex: 1}}
           ref='innerListView'
+          initialListSize={initialListSize}
           scrollEnabled={false}
           horizontal={true}
           enableEmptySections={true}
